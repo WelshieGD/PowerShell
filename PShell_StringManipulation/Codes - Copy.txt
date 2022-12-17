@@ -1,0 +1,8 @@
+Invoice/cbc:ID
+CreditNote/cbc:IDCreditNote
+
+Invoice/cbc:IssueDate
+CreditNote/cbc:IssueDateCreditNote
+
+Invoice/cbc:InvoiceTypeCode
+CreditNote/cbc:CreditNoteTypeCodeCreditNote
