@@ -2,14 +2,16 @@
 # Run with administrator credentials
 
 # Get Logged in User
-$LoggedInUser = (Get-WMIObject -class Win32_ComputerSystem | select user).username
+$LoggedInUser = Get-WMIObject -class Win32_ComputerSystem | select username
 
 
 # Add to local Remote Desktop Users Group
 Add-LocalGroupMember -Group "Remote Desktop Users" -Member $LoggedInUser
 
 
-<# Finding logged in user 
+<# Finding user running PowerShell (not neccesarily the same as the logged on user!)
+
+Shows context of user running PowerShell
 
 If you want to access the environment variable:
 (easier/shorter/memorable option)
@@ -17,7 +19,8 @@ If you want to access the environment variable:
 	• $env:username
     • whoami
 
-Shows context of user running PowerShell
+OR
+
  [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
 
 
