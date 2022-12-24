@@ -1,0 +1,8 @@
+Invoice/xxx:ID
+CreditNote/xxx:IDCreditNote
+
+Invoice/xxx:IssueDate
+CreditNote/xxx:IssueDateCreditNote
+
+Invoice/xxx:InvoiceTypeCode
+CreditNote/xxx:CreditNoteTypeCodeCreditNote
