@@ -1,21 +1,26 @@
 # Import CSV file
-$RemoveHeader = Get-Content -Path C:\temp\excel\Book1.csv 
+$ExcelData = Import-CSV -Path C:\temp\excel\Book1.csv 
 
-# Find nulls in Name1 column and update them with the value in the Name column
-foreach ($row in $RemoveHeader) {
-    $row.Name
-    if ($row[1] -eq $null) {
-        $row[1] = $row[0]
-        Write-Host "updating value in excel"
+foreach ($row in $ExcelData) {
+    $count = 0
+    if ($row[$Count].Name2 -eq "") {
+        $row[$Count].Name2 = $row[$Count].Name
+        Write-Host $row[$Count]
+        $count=$count+1
     }
 }
 
-# Remove Header and Save
-$RemoveHeader = $RemoveHeader[1..($RemoveHeader.Count - 1)]
+$ExcelData
+$UniqueRows =  $ExcelData | sort Name,Code -Unique
 
-$RemoveHeader | Out-File -FilePath C:\temp\excel\Book1NoHeader.csv 
+#$UniqueRows
+
+# Remove Header and Save
+#$RemoveHeader = $RemoveHeader[1..($RemoveHeader.Count - 1)]
+
+#$RemoveHeader | Out-File -FilePath C:\temp\excel\Book1NoHeader.csv 
 
 # Import file cleansed of headers and remove duplicates
-$UniqueRows =  Import-CSV -Path C:\Temp\excel\Book1NoHeader.csv -Header Name, Name2, Code | sort Name,Code -Unique
+# $UniqueRows =  Import-CSV -Path C:\Temp\excel\Book1NoHeader.csv -Header Name, Name2, Code | sort Name,Code -Unique
 
-$UniqueRows | Export-Csv c:\temp\excel\rippedBook1.csv 
+$UniqueRows | Export-Csv c:\temp\excel\rippedBook1.csv -NoTypeInformation
