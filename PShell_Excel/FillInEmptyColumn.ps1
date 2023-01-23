@@ -13,6 +13,7 @@ foreach ($row in $ExcelData) {
 $ExcelData
 $UniqueRows =  $ExcelData | sort Name,Code -Unique
 
+
 #$UniqueRows
 
 # Remove Header and Save
