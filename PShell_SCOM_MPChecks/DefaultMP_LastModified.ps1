@@ -10,6 +10,8 @@ Get-SCOMManagementPack -Name Microsoft.SystemCenter.OperationsManager.DefaultUse
 
 $DefaultMPLastModified = Get-SCOMManagementPack -Name Microsoft.SystemCenter.OperationsManager.DefaultUser |  Select-Object -ExpandProperty  LastModified
 
+If  (((Get-Date)-$DefaultMPLastModified).Day -lt 1) {write-output "File Changed in Last day"}
+
 <#
 PS C:\Users\graham\Source\Repos\PowerShell\PShell_SCOM_MPChecks> $DefaultMPLastModified.GetType()
 IsPublic IsSerial Name                                     BaseType
